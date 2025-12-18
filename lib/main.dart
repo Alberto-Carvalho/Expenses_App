@@ -1,3 +1,4 @@
+import 'package:expenses_app/components/chart.dart';
 import 'package:expenses_app/components/transactions_form.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -23,7 +24,20 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: MyHomepage(),
-      theme: ThemeData(primarySwatch: Colors.red, useMaterial3: false),
+      theme: ThemeData(
+        primaryColor: Colors.green,
+        fontFamily: 'Quicksand',
+
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.blue,
+          foregroundColor: Colors.white,
+          titleTextStyle: TextStyle(
+            fontFamily: 'OpenSans',
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
     );
   }
 }
@@ -34,20 +48,32 @@ class MyHomepage extends StatefulWidget {
 }
 
 class _MyHomepageState extends State<MyHomepage> {
-  final _transaction = [
+  final List<Transaction> _transaction = [
+    Transaction(
+      id: 't0',
+      title: 'Conta Antiga',
+      value: 400.59,
+      date: DateTime.now().subtract(Duration(days: 5)),
+    ),
     Transaction(
       id: 't1',
       title: 'tenis de corrida',
-      value: 200.59,
-      date: DateTime.now(),
+      value: 800.59,
+      date: DateTime.now().subtract(Duration(days: 3)),
     ),
     Transaction(
       id: 't2',
       title: 'Sapado de passeio',
       value: 199.90,
-      date: DateTime.now(),
+      date: DateTime.now().subtract(Duration(days: 4)),
     ),
   ];
+
+  List<Transaction> get _recentTransaction {
+    return _transaction.where((tr) {
+      return tr.date.isAfter(DateTime.now().subtract(Duration(days: 7)));
+    }).toList();
+  }
 
   _addTransaction(String title, double value) {
     final newTransaction = Transaction(
@@ -84,30 +110,26 @@ class _MyHomepageState extends State<MyHomepage> {
           ),
         ],
 
-        title: Text('Despesas Pessoais'),
+        title: Text(
+          'Despesas Pessoais',
+          style: TextStyle(fontFamily: 'OpenSans'),
+        ),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Container(
-            child: Card(
-              child: Text(
-                'Grafico',
-                style: TextStyle(color: Theme.of(context).primaryColor),
-              ),
-            ),
-          ),
-
+          Chart(_recentTransaction),
+          SizedBox(height: 10),
           Expanded(child: TransactionList(_transaction)),
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        //backgroundColor: Colors.blue,
+        backgroundColor: Theme.of(context).primaryColor,
         shape: CircleBorder(),
 
         onPressed: _openTransactionFormModal,
 
-        child: Icon(Icons.add),
+        child: Icon(Icons.add, color: Colors.white),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );

@@ -35,13 +35,25 @@ class _TransactionsFormState extends State<TransactionsForm> {
             TextField(
               onSubmitted: (_) => -_submitForm(),
               controller: titleCrontroller,
-              decoration: InputDecoration(labelText: 'Titulo'),
+              decoration: InputDecoration(
+                labelText: 'Titulo',
+                labelStyle: TextStyle(
+                  fontFamily: 'Quicksand-bold',
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
             TextField(
               keyboardType: TextInputType.numberWithOptions(decimal: true),
               onSubmitted: (_) => _submitForm(),
               controller: valueController,
-              decoration: InputDecoration(labelText: 'Valor (R\$)'),
+              decoration: InputDecoration(
+                labelText: 'Valor (R\$)',
+                labelStyle: TextStyle(
+                  fontFamily: 'Quicksand-bold',
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
 
             Padding(
@@ -50,7 +62,7 @@ class _TransactionsFormState extends State<TransactionsForm> {
                 onPressed: _submitForm,
                 child: Text(
                   'Nova transação',
-                  style: TextStyle(color: Colors.purple),
+                  style: TextStyle(fontFamily: 'OpenSans-bold', fontSize: 18),
                 ),
               ),
             ),

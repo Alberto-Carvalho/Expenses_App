@@ -10,44 +10,71 @@ class TransactionList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: transactions.length,
-      itemBuilder: (ctx, index) {
-        final tr = transactions[index];
-        return Card(
-          child: Row(
+    return transactions.isEmpty
+        ? Column(
             children: [
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.purple[50]!, width: 2),
-                ),
-
-                padding: EdgeInsets.all(10),
-
-                child: Text(
-                  'R\$ ${tr.value.toStringAsFixed(2)}',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Theme.of(context).primaryColor,
-                  ),
+              Text(
+                'Nenhuma transação cadastrada!',
+                style: TextStyle(
+                  fontFamily: 'OpenSans',
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15,
                 ),
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(tr.title, style: TextStyle(fontWeight: FontWeight.bold)),
-                  Text(
-                    DateFormat('d MMM y').format(tr.date),
-                    style: TextStyle(color: Theme.of(context).primaryColor),
-                  ),
-                ],
-              ),
+
+              Image.asset('assets/images/imagem_ociosidade.png'),
             ],
-          ),
-        );
-      },
-    );
+          )
+        : ListView.builder(
+            itemCount: transactions.length,
+            itemBuilder: (ctx, index) {
+              final tr = transactions[index];
+              return Card(
+                child: Row(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.symmetric(
+                        vertical: 10,
+                        horizontal: 15,
+                      ),
+
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.purple[50]!, width: 2),
+                      ),
+
+                      padding: EdgeInsets.all(10),
+
+                      child: Text(
+                        'R\$ ${tr.value.toStringAsFixed(2)}',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context).primaryColor,
+                          fontSize: 15,
+                        ),
+                      ),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          tr.title,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                          ),
+                        ),
+                        Text(
+                          DateFormat('d MMM y').format(tr.date),
+                          style: TextStyle(
+                            color: Theme.of(context).primaryColor,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              );
+            },
+          );
   }
 }
