@@ -1,16 +1,45 @@
-# expenses_app
+📊 Despesas Pessoais
 
-A new Flutter project.
+Despesas Pessoais é um aplicativo mobile desenvolvido como projeto pessoal, com o objetivo de praticar e consolidar conhecimentos em desenvolvimento mobile, organização de dados e experiência do usuário, permitindo ao usuário registrar e acompanhar seus gastos do dia a dia de forma simples e visual.
 
-## Getting Started
+O app possibilita o controle financeiro básico, ajudando o usuário a ter mais clareza sobre onde o dinheiro está sendo gasto ao longo do tempo.
 
-This project is a starting point for a Flutter application.
+🚀 Funcionalidades
 
-A few resources to get you started if this is your first Flutter project:
+➕ Cadastro de despesas com descrição, valor e data
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+📋 Listagem das despesas registradas
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+📊 Visualização gráfica dos gastos por dia da semana
+
+💰 Destaque visual para valores monetários
+
+🗑️ Organização simples e intuitiva dos registros
+
+📱 Interface moderna, limpa e focada em usabilidade
+
+🛠️ Tecnologias utilizadas
+
+Flutter
+
+Dart
+
+Material Design
+
+Gerenciamento de estado básico
+
+Persistência de dados local (quando aplicável)
+
+🎯 Objetivo do projeto
+
+Este projeto foi criado com fins educacionais e práticos, visando:
+
+Aplicar conceitos de UI/UX
+
+Trabalhar com listas dinâmicas
+
+Manipulação de datas e valores
+
+Organização de código
+
+Evoluir habilidades como desenvolvedor mobile
